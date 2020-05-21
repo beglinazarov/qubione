@@ -1,2 +1,3 @@
 # qubione
-qubione platform provide proven business solitions
+
+qubione platform provide proven business solitions.
