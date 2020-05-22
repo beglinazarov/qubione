@@ -1,0 +1,25 @@
+services:
+  database:
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: eCommercePassword2020
+    image: mcr.microsoft.com/mssql/server
+  webmvc:
+    build:
+      context: D:\projects\qubione\e-commerce
+      dockerfile: src/Web/WebMVC/Dockerfile
+    depends_on:
+    - database
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: https://+:443;http://+:80
+    image: webmvc
+    ports:
+    - published: 8000
+      target: 80
+    - target: 80
+    - target: 443
+    volumes:
+    - C:\Users\beg\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+    - C:\Users\beg\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
+version: '3.4'

@@ -1,0 +1,15 @@
+version: "3.4"
+
+services:
+  webmvc:
+    image: ${DOCKER_REGISTRY-}webmvc
+    build:
+      context: .
+      dockerfile: src/Web/WebMVC/Dockerfile
+    depends_on:
+      - database
+  database:
+    image: "mcr.microsoft.com/mssql/server"
+    environment:
+      SA_PASSWORD: "eCommercePassword2020"
+      ACCEPT_EULA: "Y"
