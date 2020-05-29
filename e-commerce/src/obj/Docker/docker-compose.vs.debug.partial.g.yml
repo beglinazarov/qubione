@@ -1,0 +1,55 @@
+version: '3.4'
+
+services:
+  catalog-api:
+    image: 160816001/e-commerce:dev
+    container_name: Catalog.API
+    build:
+      target: base
+      labels:
+        com.microsoft.created-by: "visual-studio"
+        com.microsoft.visual-studio.project-name: "Catalog.API"
+    environment:
+      - DOTNET_USE_POLLING_FILE_WATCHER=1
+      #- NUGET_FALLBACK_PACKAGES=$container_paths_to_fallback_packages_catalog-api$
+    volumes:
+      - D:\projects\qubion\e-commerce\src\Services\Catalog\Catalog.API:/app
+      - D:\projects\qubion\e-commerce\src:/src
+      - C:\Users\beg\vsdbg\vs2017u5:/remote_debugger:rw
+#$nuget_volume_mapping_catalog-api$
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+
+    entrypoint: tail -f /dev/null
+    labels:
+      com.microsoft.visualstudio.debuggee.program: "dotnet"
+      #com.microsoft.visualstudio.debuggee.arguments: " $debuggee_arguments_probing_paths_catalog-api$ \"\""
+      com.microsoft.visualstudio.debuggee.workingdirectory: "/app"
+      com.microsoft.visualstudio.debuggee.killprogram: "/bin/sh -c \"if PID=$$(pidof dotnet); then kill $$PID; fi\""
+    tty: true
+  webui:
+    image: 160816001/e-commerce:dev
+    container_name: WebUI
+    build:
+      target: base
+      labels:
+        com.microsoft.created-by: "visual-studio"
+        com.microsoft.visual-studio.project-name: "WebUI"
+    environment:
+      - DOTNET_USE_POLLING_FILE_WATCHER=1
+      #- NUGET_FALLBACK_PACKAGES=$container_paths_to_fallback_packages_webui$
+    volumes:
+      - D:\projects\qubion\e-commerce\src\Web\WebUI:/app
+      - D:\projects\qubion\e-commerce\src:/src
+      - C:\Users\beg\vsdbg\vs2017u5:/remote_debugger:rw
+#$nuget_volume_mapping_webui$
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+
+    entrypoint: tail -f /dev/null
+    labels:
+      com.microsoft.visualstudio.debuggee.program: "dotnet"
+      #com.microsoft.visualstudio.debuggee.arguments: " $debuggee_arguments_probing_paths_webui$ \"bin/Debug/netcoreapp3.1/WebUI.dll\""
+      com.microsoft.visualstudio.debuggee.workingdirectory: "/app"
+      com.microsoft.visualstudio.debuggee.killprogram: "/bin/sh -c \"if PID=$$(pidof dotnet); then kill $$PID; fi\""
+    tty: true

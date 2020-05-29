@@ -88,11 +88,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\projects\\qubione\\e-commerce\\src\\Web\\WebMVC\\WebMVC.csproj",
+      "projectUniqueName": "D:\\projects\\qubion\\e-commerce\\src\\Web\\WebMVC\\WebMVC.csproj",
       "projectName": "WebMVC",
-      "projectPath": "D:\\projects\\qubione\\e-commerce\\src\\Web\\WebMVC\\WebMVC.csproj",
+      "projectPath": "D:\\projects\\qubion\\e-commerce\\src\\Web\\WebMVC\\WebMVC.csproj",
       "packagesPath": "C:\\Users\\beg\\.nuget\\packages\\",
-      "outputPath": "D:\\projects\\qubione\\e-commerce\\src\\Web\\WebMVC\\obj\\",
+      "outputPath": "D:\\projects\\qubion\\e-commerce\\src\\Web\\WebMVC\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

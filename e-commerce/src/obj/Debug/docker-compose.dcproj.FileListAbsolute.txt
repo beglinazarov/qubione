@@ -1,0 +1,10 @@
+D:\projects\qubion\e-commerce\src\bin\Debug\WebUI.Views.dll
+D:\projects\qubion\e-commerce\src\bin\Debug\WebUI.Views.pdb
+D:\projects\qubion\e-commerce\src\bin\Debug\appsettings.Development.json
+D:\projects\qubion\e-commerce\src\bin\Debug\appsettings.json
+D:\projects\qubion\e-commerce\src\bin\Debug\Properties\launchSettings.json
+D:\projects\qubion\e-commerce\src\bin\Debug\WebUI.exe
+D:\projects\qubion\e-commerce\src\bin\Debug\WebUI.dll
+D:\projects\qubion\e-commerce\src\bin\Debug\WebUI.pdb
+D:\projects\qubion\e-commerce\src\obj\Debug\docker-compose.dcprojAssemblyReference.cache
+D:\projects\qubion\e-commerce\src\obj\Debug\docker-compose.dcproj.CopyComplete

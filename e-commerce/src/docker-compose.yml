@@ -1,0 +1,17 @@
+version: "3.4"
+
+services:
+  webui:
+    image: ${DOCKER_REGISTRY-160816001}/e-commerce:${MODULE:-webui}-${VERSION:-v1.0}-${TAG:-first}
+    build:
+      context: .
+      dockerfile: ./Web/WebUI/Dockerfile
+    ports:
+      - "8080:80"
+  catalog-api:
+    image: ${DOCKER_REGISTRY-160816001}/e-commerce:${MODULE:-catalog-api}-${VERSION:-v1.0}-${TAG:-first}
+    build:
+      context: .
+      dockerfile: ./Services/Catalog/Catalog.API/Dockerfile
+    ports:
+      - "5105:80"

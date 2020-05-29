@@ -1,0 +1,16 @@
+services:
+  webui:
+    build:
+      context: D:\projects\qubion\e-commerce
+      dockerfile: src/Web/WebUI/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: https://+:443;http://+:80
+    image: ecommerce/webui:linux-v1
+    ports:
+    - target: 80
+    - target: 443
+    volumes:
+    - C:\Users\beg\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+    - C:\Users\beg\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
+version: '3.4'

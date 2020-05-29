@@ -6,17 +6,15 @@ services:
     image: mcr.microsoft.com/mssql/server
   webmvc:
     build:
-      context: D:\projects\qubione\e-commerce
-      dockerfile: src/Web/WebMVC/Dockerfile
+      context: D:\projects\qubion\e-commerce
+      dockerfile: src/Services/Catalog/Catalog.API/Dockerfile
     depends_on:
     - database
     environment:
       ASPNETCORE_ENVIRONMENT: Development
       ASPNETCORE_URLS: https://+:443;http://+:80
-    image: webmvc
+    image: catalog-api
     ports:
-    - published: 8000
-      target: 80
     - target: 80
     - target: 443
     volumes:

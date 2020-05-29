@@ -1,29 +1,30 @@
 version: '3.4'
 
 services:
-  webmvc:
-    image: webmvc:dev
-    container_name: WebMVC
+  webui:
+    image: webui:dev
+    container_name: WebUI_1
     build:
       target: base
       labels:
         com.microsoft.created-by: "visual-studio"
-        com.microsoft.visual-studio.project-name: "WebMVC"
+        com.microsoft.visual-studio.project-name: "WebUI"
     environment:
       - DOTNET_USE_POLLING_FILE_WATCHER=1
-      #- NUGET_FALLBACK_PACKAGES=$container_paths_to_fallback_packages_webmvc$
+      - NUGET_FALLBACK_PACKAGES=/root/.nuget/fallbackpackages
     volumes:
-      - D:\projects\qubione\e-commerce\src\Web\WebMVC:/app
-      - D:\projects\qubione\e-commerce:/src
+      - D:\projects\qubion\e-commerce\src\web\webui:/app
+      - D:\projects\qubion\e-commerce\src\web\webui:/src
       - C:\Users\beg\vsdbg\vs2017u5:/remote_debugger:rw
-#$nuget_volume_mapping_webmvc$
+      - C:\Users\beg\.nuget\packages\:/root/.nuget/packages:ro
+      - C:\Program Files\dotnet\sdk\NuGetFallbackFolder:/root/.nuget/fallbackpackages:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
 
     entrypoint: tail -f /dev/null
     labels:
       com.microsoft.visualstudio.debuggee.program: "dotnet"
-      #com.microsoft.visualstudio.debuggee.arguments: " $debuggee_arguments_probing_paths_webmvc$ \"bin/Debug/netcoreapp3.1/WebMVC.dll\""
+      com.microsoft.visualstudio.debuggee.arguments: " --additionalProbingPath /root/.nuget/packages --additionalProbingPath /root/.nuget/fallbackpackages  \"bin/Debug/netcoreapp3.1/WebUI.dll\""
       com.microsoft.visualstudio.debuggee.workingdirectory: "/app"
       com.microsoft.visualstudio.debuggee.killprogram: "/bin/sh -c \"if PID=$$(pidof dotnet); then kill $$PID; fi\""
     tty: true
