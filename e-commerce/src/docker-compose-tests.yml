@@ -1,0 +1,43 @@
+version: '3.4'
+
+services:
+  sql-data-test:
+    image: mcr.microsoft.com/mssql/server:2017-latest 
+
+  identity-api-test:
+    image: ${REGISTRY:-160816001}/e-commerce:${MODULE:-identity-api-test}-${VERSION:-v1.0}-${TAG:-first}
+    build:
+      context: .
+      dockerfile: Services/Identity/Identity.API/Dockerfile
+    depends_on:
+      - sql-data-test
+	
+  webui-test:
+    image: ${DOCKER_REGISTRY:-160816001}/e-commerce:${MODULE:-webui}-${VERSION:-v1.0}-${TAG:-first}
+    build:
+      context: .
+      dockerfile: ./Web/WebUI/Dockerfile
+    depends_on:
+	 -	sql-data-test
+
+  catalog-api-functional-test:
+    image: ${REGISTRY:-160816001}/e-commerce:${MODULE:-catalog-api-functional-test}-${VERSION:-v1.0}-${TAG:-first}
+    build:
+      context: .
+      dockerfile: Services/Catalog/Catalog.API/Dockerfile
+      target: functionaltest
+    depends_on:
+      - sql-data-test
+    volumes:
+      - ${BUILD_ARTIFACTSTAGINGDIRECTORY:-./tests-results/}:/tests
+
+  catalog-api-unit-test:
+    image: ${REGISTRY:-160816001}/e-commerce:${MODULE:-catalog-api-unit-test}-${VERSION:-v1.0}-${TAG:-first}
+    build:
+      context: .
+      dockerfile: Services/Catalog/Catalog.API/Dockerfile
+      target: unittest
+    depends_on:
+      - sql-data-test
+    volumes:
+      - ${BUILD_ARTIFACTSTAGINGDIRECTORY:-./tests-results/}:/tests

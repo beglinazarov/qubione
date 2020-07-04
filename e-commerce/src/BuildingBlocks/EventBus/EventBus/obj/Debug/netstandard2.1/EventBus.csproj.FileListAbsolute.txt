@@ -1,0 +1,8 @@
+D:\projects\qubion\e-commerce\src\BuildingBlocks\EventBus\EventBus\bin\Debug\netstandard2.1\EventBus.deps.json
+D:\projects\qubion\e-commerce\src\BuildingBlocks\EventBus\EventBus\bin\Debug\netstandard2.1\EventBus.dll
+D:\projects\qubion\e-commerce\src\BuildingBlocks\EventBus\EventBus\bin\Debug\netstandard2.1\EventBus.pdb
+D:\projects\qubion\e-commerce\src\BuildingBlocks\EventBus\EventBus\obj\Debug\netstandard2.1\EventBus.csprojAssemblyReference.cache
+D:\projects\qubion\e-commerce\src\BuildingBlocks\EventBus\EventBus\obj\Debug\netstandard2.1\EventBus.AssemblyInfoInputs.cache
+D:\projects\qubion\e-commerce\src\BuildingBlocks\EventBus\EventBus\obj\Debug\netstandard2.1\EventBus.AssemblyInfo.cs
+D:\projects\qubion\e-commerce\src\BuildingBlocks\EventBus\EventBus\obj\Debug\netstandard2.1\EventBus.dll
+D:\projects\qubion\e-commerce\src\BuildingBlocks\EventBus\EventBus\obj\Debug\netstandard2.1\EventBus.pdb

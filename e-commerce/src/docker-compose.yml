@@ -1,17 +1,39 @@
 version: "3.4"
 
 services:
+  sqldata:
+    image: mcr.microsoft.com/mssql/server:2017-latest
+    ports:
+      - "5433:1433"
+  identity-api:
+    image: ${REGISTRY:-160816001}/e-commerce:${MICROSERVICE:-identity-api}-${VERSION:-v1.0}-${TAG:-first}
+    build:
+      context: .
+      dockerfile: ./Services/Identity/Identity.API/Dockerfile
+    depends_on:
+      - sqldata
+
   webui:
     image: ${DOCKER_REGISTRY-160816001}/e-commerce:${MODULE:-webui}-${VERSION:-v1.0}-${TAG:-first}
     build:
       context: .
       dockerfile: ./Web/WebUI/Dockerfile
-    ports:
-      - "8080:80"
+
   catalog-api:
-    image: ${DOCKER_REGISTRY-160816001}/e-commerce:${MODULE:-catalog-api}-${VERSION:-v1.0}-${TAG:-first}
+    image: ${DOCKER_REGISTRY-160816001}/e-commerce:${MICROSERVICE:-catalog-api}-${VERSION:-v1.0}-${TAG:-first}
     build:
       context: .
       dockerfile: ./Services/Catalog/Catalog.API/Dockerfile
-    ports:
-      - "5105:80"
+
+  webshoppingagg:
+    image: ${REGISTRY:-160816001}/e-commerce:${MODULE:-webshoppingagg}-${VERSION:-v1.0.0}-${TAG:-first}
+    build:
+      context: .
+      dockerfile: ./ApiGateways/Web.Bff.Shopping/aggregator/Dockerfile
+    depends_on:
+      - sqldata
+      - identity-api
+      - catalog-api
+
+  webshoppingapigw:
+    image: envoyproxy/envoy:v1.11.1

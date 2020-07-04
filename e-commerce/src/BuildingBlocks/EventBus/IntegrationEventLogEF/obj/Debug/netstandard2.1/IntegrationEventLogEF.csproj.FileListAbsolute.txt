@@ -1,0 +1,11 @@
+D:\projects\qubion\e-commerce\src\BuildingBlocks\EventBus\IntegrationEventLogEF\bin\Debug\netstandard2.1\IntegrationEventLogEF.deps.json
+D:\projects\qubion\e-commerce\src\BuildingBlocks\EventBus\IntegrationEventLogEF\bin\Debug\netstandard2.1\IntegrationEventLogEF.dll
+D:\projects\qubion\e-commerce\src\BuildingBlocks\EventBus\IntegrationEventLogEF\bin\Debug\netstandard2.1\IntegrationEventLogEF.pdb
+D:\projects\qubion\e-commerce\src\BuildingBlocks\EventBus\IntegrationEventLogEF\bin\Debug\netstandard2.1\EventBus.dll
+D:\projects\qubion\e-commerce\src\BuildingBlocks\EventBus\IntegrationEventLogEF\bin\Debug\netstandard2.1\EventBus.pdb
+D:\projects\qubion\e-commerce\src\BuildingBlocks\EventBus\IntegrationEventLogEF\obj\Debug\netstandard2.1\IntegrationEventLogEF.csprojAssemblyReference.cache
+D:\projects\qubion\e-commerce\src\BuildingBlocks\EventBus\IntegrationEventLogEF\obj\Debug\netstandard2.1\IntegrationEventLogEF.AssemblyInfoInputs.cache
+D:\projects\qubion\e-commerce\src\BuildingBlocks\EventBus\IntegrationEventLogEF\obj\Debug\netstandard2.1\IntegrationEventLogEF.AssemblyInfo.cs
+D:\projects\qubion\e-commerce\src\BuildingBlocks\EventBus\IntegrationEventLogEF\obj\Debug\netstandard2.1\IntegrationEventLogEF.csproj.CopyComplete
+D:\projects\qubion\e-commerce\src\BuildingBlocks\EventBus\IntegrationEventLogEF\obj\Debug\netstandard2.1\IntegrationEventLogEF.dll
+D:\projects\qubion\e-commerce\src\BuildingBlocks\EventBus\IntegrationEventLogEF\obj\Debug\netstandard2.1\IntegrationEventLogEF.pdb

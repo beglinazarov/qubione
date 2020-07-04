@@ -1,13 +1,64 @@
-version: '3.4'
+version: "3.4"
 
 services:
+  sqldata:
+    environment:
+      - SA_PASSWORD=Pass@word
+      - ACCEPT_EULA=Y
+    ports:
+      - "5433:1433"
+    volumes:
+      - ecommerce-sqldata:/var/opt/mssql
+
+  webshoppingapigw:
+    volumes:
+      - ./ApiGateways/Envoy/config/webshopping:/etc/envoy
+    ports:
+      - "5202:80"
+      - "15202:8001"
+
+  webshoppingagg:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - urls__catalog=http://catalog-api
+      - urls__identity=http://identity-api
+      - urls__grpcCatalog=http://catalog-api:81
+    ports:
+      - "5121:80"
+
+  catalog-api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionString=${ESHOP_AZURE_CATALOG_DB:-Server=sqldata;Database=Microsoft.eShopOnContainers.Services.CatalogDb;User Id=sa;Password=Pass@word}
+      - PicBaseUrl=${ESHOP_STORAGE_CATALOG_URL}
+      - EventBusConnection=${ESHOP_AZURE_SERVICE_BUS:-rabbitmq}
+      - EventBusUserName=${ESHOP_SERVICE_BUS_USERNAME}
+      - EventBusPassword=${ESHOP_SERVICE_BUS_PASSWORD}
+      - AzureStorageAccountName=${ESHOP_AZURE_STORAGE_CATALOG_NAME}
+      - AzureStorageAccountKey=${ESHOP_AZURE_STORAGE_CATALOG_KEY}
+      - UseCustomizationData=True
+      - AzureServiceBusEnabled=False
+      - AzureStorageEnabled=False
+      - ApplicationInsights__InstrumentationKey=${INSTRUMENTATION_KEY}
+      - OrchestratorType=${ORCHESTRATOR_TYPE}
+      - GRPC_PORT=81
+      - PORT=80
+      - PATH_BASE=/catalog-api
+    ports:
+      - "5105:80"
+      - "9105:81"
+
   webui:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=https://+:443;http://+:80
     ports:
-      - "80"
-      - "443"
+      - "5100:80"
+      - "5200:443"
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+
+volumes:
+  ecommerce-sqldata:
+    external: false

@@ -1,0 +1,117 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\projects\\qubion\\e-commerce\\src\\ApiGateways\\Web.Bff.Shopping\\aggregator\\Web.Shopping.HttpAggregator.csproj": {}
+  },
+  "projects": {
+    "D:\\projects\\qubion\\e-commerce\\src\\ApiGateways\\Web.Bff.Shopping\\aggregator\\Web.Shopping.HttpAggregator.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\projects\\qubion\\e-commerce\\src\\ApiGateways\\Web.Bff.Shopping\\aggregator\\Web.Shopping.HttpAggregator.csproj",
+        "projectName": "Web.Shopping.HttpAggregator",
+        "projectPath": "D:\\projects\\qubion\\e-commerce\\src\\ApiGateways\\Web.Bff.Shopping\\aggregator\\Web.Shopping.HttpAggregator.csproj",
+        "packagesPath": "C:\\Users\\beg\\.nuget\\packages\\",
+        "outputPath": "D:\\projects\\qubion\\e-commerce\\src\\ApiGateways\\Web.Bff.Shopping\\aggregator\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "D:\\projects\\qubion\\e-commerce\\src\\NuGet.Config",
+          "C:\\Users\\beg\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 19.1.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 19.2.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\DevExpress 19.1\\Components\\System\\Components\\Packages": {},
+          "C:\\Program Files (x86)\\DevExpress 19.2\\Components\\System\\Components\\Packages": {},
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://dotnet.myget.org/F/aspnetcore-dev/api/v3/index.json": {},
+          "https://dotnet.myget.org/F/aspnetcore-tools/api/v3/index.json": {},
+          "https://dotnet.myget.org/F/dotnet-core/api/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "Google.Protobuf": {
+              "target": "Package",
+              "version": "[3.11.2, )"
+            },
+            "Grpc.AspNetCore": {
+              "target": "Package",
+              "version": "[2.23.2, )"
+            },
+            "Grpc.AspNetCore.Server.ClientFactory": {
+              "target": "Package",
+              "version": "[2.25.0, )"
+            },
+            "Grpc.Core": {
+              "target": "Package",
+              "version": "[2.25.0, )"
+            },
+            "Grpc.Net.Client": {
+              "target": "Package",
+              "version": "[2.25.0, )"
+            },
+            "Grpc.Tools": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.25.0, )"
+            },
+            "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
+              "target": "Package",
+              "version": "[3.1.0, )"
+            },
+            "Serilog.AspNetCore": {
+              "target": "Package",
+              "version": "[3.2.0, )"
+            },
+            "Serilog.Sinks.Console": {
+              "target": "Package",
+              "version": "[4.0.0-dev-00834, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[5.0.0-rc5, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

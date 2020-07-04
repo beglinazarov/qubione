@@ -12,10 +12,12 @@ WORKDIR /src
 # to take advantage of Docker's build cache, to speed up local container builds
 COPY "e-commerce.sln" "e-commerce.sln"
 
+COPY "ApiGateways/Web.Bff.Shopping/aggregator/Web.Shopping.HttpAggregator.csproj" "ApiGateways/Web.Bff.Shopping/aggregator/Web.Shopping.HttpAggregator.csproj"
+COPY "BuildingBlocks/EventBus/EventBus/EventBus.csproj" "BuildingBlocks/EventBus/EventBus/EventBus.csproj"
+COPY "BuildingBlocks/EventBus/IntegrationEventLogEF/IntegrationEventLogEF.csproj" "BuildingBlocks/EventBus/IntegrationEventLogEF/IntegrationEventLogEF.csproj"
+COPY "Services/Identity/Identity.API/Identity.API.csproj" "Services/Identity/Identity.API/Identity.API.csproj"
 COPY "Services/Catalog/Catalog.API/Catalog.API.csproj" "Services/Catalog/Catalog.API/Catalog.API.csproj"
 COPY "Web/WebUI/WebUI.csproj" "Web/WebUI/WebUI.csproj"
-COPY "Web/WebMVC/WebMVC.csproj" "Web/WebMVC/WebMVC.csproj"
-
 
 COPY "docker-compose.dcproj" "docker-compose.dcproj"
 

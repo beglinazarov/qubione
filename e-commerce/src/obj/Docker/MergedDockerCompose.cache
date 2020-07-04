@@ -3,10 +3,73 @@ services:
     build:
       context: D:\projects\qubion\e-commerce\src
       dockerfile: ./Services/Catalog/Catalog.API/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ApplicationInsights__InstrumentationKey: ''
+      AzureServiceBusEnabled: "False"
+      AzureStorageAccountKey: ''
+      AzureStorageAccountName: ''
+      AzureStorageEnabled: "False"
+      ConnectionString: Server=sqldata;Database=Microsoft.eShopOnContainers.Services.CatalogDb;User
+        Id=sa;Password=Pass@word
+      EventBusConnection: rabbitmq
+      EventBusPassword: ''
+      EventBusUserName: ''
+      GRPC_PORT: '81'
+      OrchestratorType: ''
+      PATH_BASE: /catalog-api
+      PORT: '80'
+      PicBaseUrl: ''
+      UseCustomizationData: "True"
     image: 160816001/e-commerce:catalog-api-v1.0-first
     ports:
     - published: 5105
       target: 80
+    - published: 9105
+      target: 81
+  identity-api:
+    build:
+      context: D:\projects\qubion\e-commerce\src
+      dockerfile: ./Services/Identity/Identity.API/Dockerfile
+    depends_on:
+    - sqldata
+    image: 160816001/e-commerce:identity-api-v1.0-first
+  sqldata:
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: Pass@word
+    image: mcr.microsoft.com/mssql/server:2017-latest
+    ports:
+    - published: 5433
+      target: 1433
+    volumes:
+    - ecommerce-sqldata:/var/opt/mssql:rw
+  webshoppingagg:
+    build:
+      context: D:\projects\qubion\e-commerce\src
+      dockerfile: ./ApiGateways/Web.Bff.Shopping/aggregator/Dockerfile
+    depends_on:
+    - catalog-api
+    - identity-api
+    - sqldata
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      urls__catalog: http://catalog-api
+      urls__grpcCatalog: http://catalog-api:81
+      urls__identity: http://identity-api
+    image: 160816001/e-commerce:webshoppingagg-v1.0.0-first
+    ports:
+    - published: 5121
+      target: 80
+  webshoppingapigw:
+    image: envoyproxy/envoy:v1.11.1
+    ports:
+    - published: 5202
+      target: 80
+    - published: 15202
+      target: 8001
+    volumes:
+    - D:\projects\qubion\e-commerce\src\ApiGateways\Envoy\config\webshopping:/etc/envoy:rw
   webui:
     build:
       context: D:\projects\qubion\e-commerce\src
@@ -16,11 +79,14 @@ services:
       ASPNETCORE_URLS: https://+:443;http://+:80
     image: 160816001/e-commerce:webui-v1.0-first
     ports:
-    - published: 8080
+    - published: 5100
       target: 80
-    - target: 80
-    - target: 443
+    - published: 5200
+      target: 443
     volumes:
     - C:\Users\beg\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
     - C:\Users\beg\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
 version: '3.4'
+volumes:
+  ecommerce-sqldata:
+    external: false
